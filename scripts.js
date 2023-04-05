@@ -1,35 +1,40 @@
-let choices = [
-    'rock',
-    'paper',
-    'scissors'
-]
+let choices = ["rock", "paper", "scissors"];
+let computerChoice;
+let playerChoice;
 
-function getPlayerChoice(){
-    let playerChoice = prompt('Rock, Paper, or Scissors?');
-    playerChoice = playerChoice.toLowerCase();
-    let randomChoice = Math.floor(Math.random() * choices.length);
-    let computerChoice = (choices[randomChoice].toLowerCase());
-    if(playerChoice === 'rock'){
-        if(computerChoice === 'scissors'){
-            console.log('You win!');
-        } else{
-            console.log('You lost!');
-        }
-    }
-    if(playerChoice === 'paper'){
-        if(computerChoice === 'rock'){
-            console.log('You win!');
-        } else{
-            console.log('You lost!');
-        }
-    }
-    if(playerChoice === 'scissors'){
-        if(computerChoice === 'paper'){
-            console.log('You win!');
-        } else{
-            console.log('You lost!');
-        }
-    }
-    getPlayerChoice();
-    // need to prompt user to choose rock, paper, scissors
+function getComputerChoice() {
+  let randomChoice = Math.floor(Math.random() * choices.length);
+  computerChoice = choices[randomChoice].toLowerCase();
+  console.log(`The computer chose ${computerChoice}`)
+  return computerChoice;
 }
+function playerSelection() {
+    let playerChoicePrompt = prompt("Rock, Paper, or Scissors").toLowerCase();
+    return playerChoicePrompt;
+  }
+function playGame(computer, player) {
+  if (player === "rock") {
+    if (computer === 'scissors') {
+        console.log("You won! Rock beats scissors!");
+    }   else {
+        console.log("You lost! Rock loses to paper!");  
+  }
+}
+  if (player === "paper") {
+    if (computer === 'rock') {
+        console.log("You won! Paper beats rock!");
+    }   else {
+        console.log("You lost! Paper loses to scissors!");  
+  }
+}
+  if (player === "scissors") {
+    if (computer === 'paper') {
+        console.log("You won! Scissors beats paper!");
+    }   else {
+        console.log("You lost! Scissors loses to rock!");  
+  }
+}
+  }
+  
+
+playGame(getComputerChoice(), playerSelection());
